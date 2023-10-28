@@ -15,13 +15,18 @@ public class GatewayApplication {
 
 	@Bean
 	RouteLocator routeLocator(RouteLocatorBuilder builder){
-		return builder.routes(){
-			.ro
-		}
+		return builder.routes()
+				.route("r1", r -> r.path("/customers/**").uri("http://localhost:8081/"))
+				.route("r2", r -> r.path("/products/**").uri("http://localhost:8082/"))
+				.build();
 	}
 
 
+
 }
+
+
+
 
 
 
